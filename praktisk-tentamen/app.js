@@ -18,7 +18,7 @@ fetch(URL).then(
             //lägger till 3 random land i min coutries array
             countries.push(
                 new Country(randCountry.name, randCountry.timezones[0], randCountry.flag)
-            )
+            );
         }
         //selecta alla element som behövs och lägger sedan till datan med hjälp av en forloop
         let countryIMG = document.querySelectorAll('img');
@@ -30,14 +30,13 @@ fetch(URL).then(
         countries[i].displayTime(countryTime[i])
         }    
        
-}
-).catch(
+}).catch(
     function(error){
         if(error === "not found"){
             console.log('something went wrong')
         }
     }
-)
+);
 
 //mall för Land med namn, tidszon och flagga som parametrar/egenskaper
 function Country(_name, _tZone, _flag){
@@ -51,7 +50,7 @@ Country.prototype.displayTime = function(timeContainer){
     const date = new Date();
     const UTCHour = date.getUTCHours();
     const minutes = date.getMinutes();
-    const offSet = parseInt(this.tZone.substring(3,6))
+    const offSet = parseInt(this.tZone.substring(3,6));
     //räkna ut tiden 
     const localTime = UTCHour + offSet + ":" + minutes;
     //lägger till den lokala tiden i DOM
